@@ -8,7 +8,7 @@ type vuelos {
 }
 
 type Query{
-    getFlights: [vuelos!]!
+    getFlights(origen:String,destino:String): [vuelos!]!
     getFlight(id:String!): vuelos
 }
 

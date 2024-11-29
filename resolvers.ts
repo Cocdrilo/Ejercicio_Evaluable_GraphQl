@@ -4,8 +4,8 @@ import { Collection, ObjectId } from "mongodb";
 import {fromModelToUser} from "./utils.ts";
 export const resolvers = {
     Query:{
-        getFlights: async (_:unknown,__:unknown,context:{vuelosCollection: Collection<vuelosModel>},):Promise<vuelos[]> =>{
-            const vuelosModel = await vuelosCollection.find().toArray()
+        getFlights: async (_:unknown,args:{destino?:string,origen?:string},context:{vuelosCollection: Collection<vuelosModel>},):Promise<vuelos[]> =>{
+            const vuelosModel = await vuelosCollection.find(args).toArray()
             return vuelosModel.map(fromModelToUser)
         },
         getFlight: async(_:unknown,args:{id:string},context:{vuelosCollection: Collection<vuelosModel>},):Promise<vuelos|null> => {

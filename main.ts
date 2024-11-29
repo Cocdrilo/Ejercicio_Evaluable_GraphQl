@@ -24,6 +24,7 @@ const server = new ApolloServer({
 
 const { url } = await startStandaloneServer(server, {
     context: async () => ({ vuelosCollection }),
+    listen: { port: 8000 },
 });
 
 
